@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1561647709 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\main.cpp
+1561747554 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\main.cpp
 	<iostream>
 	<vector>
 	"MainWindow.h"
@@ -414,17 +414,17 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1561647723 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\mainwindow.cpp
+1561748663 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\mainwindow.cpp
 	"MainWindow.h"
 
-1561647709 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\mainwindow.h
+1561747568 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\mainwindow.h
 	<SFML/Graphics.hpp>
 	<vector>
 	"Ball.h"
 
-1561646298 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\ball.cpp
+1561648876 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\ball.cpp
 	"Ball.h"
 
-1561646297 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\ball.h
+1561648876 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\ball.h
 	<SFML/Graphics.hpp>
 
