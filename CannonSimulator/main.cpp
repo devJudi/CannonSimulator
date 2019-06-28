@@ -17,6 +17,7 @@ int main()
         window.clear();
         for(int i = 0; i<numberOfBalls; i++)
         {
+            balls[i].doGravity(window.getSize().y);
             window.draw(balls[i]);
         }
         window.display();
