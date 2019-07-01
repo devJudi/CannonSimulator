@@ -11,7 +11,7 @@ class MainWindow : public sf::RenderWindow
         MainWindow(int x, int y, std::string name, int fps = 60);
         virtual ~MainWindow();
 
-        void handleEvent(sf::Event event, std::vector <Ball> &balls, int &numberOfBalls);
+        void handleEvent(sf::Event event, std::vector <Ball> &balls, int &numberOfBalls, materials &materialType);
 
     protected:
 
