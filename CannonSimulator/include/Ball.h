@@ -34,8 +34,9 @@ class Ball : public sf::CircleShape
 
         float speedY;
         float speedX;
-        int weight;
+        float weight;
         float mod;
+        float maxSpeedY;
         materials ballMaterial;
 
     protected:

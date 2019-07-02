@@ -4,6 +4,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <math.h>
 #include <vector>
 #include "Ball.h"
 
@@ -19,12 +20,15 @@ extern sf::Sound metalSound;
 extern sf::Sound aetherSound;
 extern sf::Sound pulsarSound;
 
+extern float cannonPower;
+
 class MainWindow : public sf::RenderWindow
 {
     public:
         MainWindow(int x, int y, std::string name, int fps = 60);
         virtual ~MainWindow();
         sf::View view;
+        bool shouldWatchBack;
 
         void loadSounds();
         void handleEvent(sf::Event event, std::vector <Ball> &balls, int &numberOfBalls, materials &materialType);

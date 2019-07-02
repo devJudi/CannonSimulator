@@ -7,6 +7,7 @@ MainWindow::MainWindow(int x, int y, std::string name, int fps)
     view.setCenter(600, 400);
     this->setView(view);
     this->setFramerateLimit(fps);
+    shouldWatchBack=false;
 }
 
 MainWindow::~MainWindow()
@@ -33,6 +34,7 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
 {
     while(this->pollEvent(event))
     {
+
         if(event.type==sf::Event::Closed)
         {
             this->close();
@@ -63,6 +65,29 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
             {
                 materialType = pulsar;
             }
+            else if(event.key.code==sf::Keyboard::P)
+            {
+                cannonPower+=100;
+            }
+            else if(event.key.code==sf::Keyboard::O)
+            {
+                if(cannonPower>100)
+                    cannonPower-=100;
+            }
+            else if(event.key.code==sf::Keyboard::L)
+            {
+                cannonPower+=1000;
+            }
+            else if(event.key.code==sf::Keyboard::K)
+            {
+                if(cannonPower>1000)
+                    cannonPower-=1000;
+            }
+            else if(event.key.code==sf::Keyboard::Backspace)
+            {
+                if(shouldWatchBack) shouldWatchBack=false;
+                else shouldWatchBack=true;
+            }
         }
         if(event.type==sf::Event::MouseButtonPressed)
         {
@@ -71,24 +96,31 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
             balls.push_back(Ball(30, materialType));
             balls[numberOfBalls].setPosition(140, 650);
             balls[numberOfBalls].speedY=-40;
+            balls[numberOfBalls].speedX=sqrt(2*cannonPower/balls[numberOfBalls].weight);
             numberOfBalls++;
         }
     }
 
-    if(numberOfBalls>0)
+    if(shouldWatchBack==false)
     {
-        view.setCenter(balls[numberOfBalls-1].getPosition().x, 400);
-        if(view.getCenter().x<600)
+        if(numberOfBalls>0)
         {
-            view.setCenter(600, 400);
+            view.setCenter(balls[numberOfBalls-1].getPosition().x, 400);
+            if(view.getCenter().x<600)
+            {
+                view.setCenter(600, 400);
+            }
+            if(balls[numberOfBalls-1].speedX<1)
+            {
+                view.setCenter(600, 400);
+            }
+            this->setView(view);
         }
-        if(balls[numberOfBalls-1].speedX<1)
-        {
-            view.setCenter(600, 400);
-        }
-        else std::cout<<balls[numberOfBalls-1].speedX<<std::endl;
+    }
+    else
+    {
+        view.setCenter(600, 400);
         this->setView(view);
     }
-
 
 }

@@ -15,21 +15,25 @@ Ball::Ball(int radius, materials material, int points)
     case wooden:
         {
             this->setFillColor(sf::Color(220, 100, 0, 240));
+            weight = 76.84;
             break;
         }
     case rubber:
         {
             this->setFillColor(sf::Color(220, 20, 100, 220));
+            weight = 158.2;
             break;
         }
     case metal:
         {
             this->setFillColor(sf::Color(100, 100, 100, 255));
+            weight = 881.4;
             break;
         }
     case aether:
         {
             this->setFillColor(sf::Color(255, 255, 10, 255));
+            weight = 33.9;
             break;
         }
     case pulsar:
@@ -37,9 +41,12 @@ Ball::Ball(int radius, materials material, int points)
             this->setFillColor(sf::Color(10, 10, 10, 255));
             this->setOutlineThickness(-1);
             this->setOutlineColor(sf::Color::White);
+            weight = 113000;
             break;
         }
     }
+
+    maxSpeedY = 16*weight;
 
 }
 
@@ -125,6 +132,6 @@ void Ball::doGravity(int floorPosition)
     else
     {
         speedY+=1;
-        this->move(speedX, mod*(speedY*weight));
+        this->move(speedX, mod*speedY);
     }
 }

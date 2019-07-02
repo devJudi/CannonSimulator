@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include "MainWindow.h"
 #include "Ball.h"
 
@@ -15,20 +16,24 @@ sf::Sound metalSound;
 sf::Sound aetherSound;
 sf::Sound pulsarSound;
 
+float cannonPower = 2000;
+
 int main()
 {
-    MainWindow window(1200, 800, "Cannon simulator v0.2");
+    MainWindow window(1200, 800, "Cannon simulator v0.3");
     window.loadSounds();
     std::vector <Ball> balls;
     int numberOfBalls = 0;
+
     materials materialType = wooden;
 
     sf::RectangleShape floor;
-    floor.setSize(sf::Vector2f(12000, 10));
+    floor.setSize(sf::Vector2f(384000, 10));
     floor.setPosition(0, 790);
     sf::Texture floorTex;
     floorTex.loadFromFile("img/floor.png");
-    floor.setTexture(&floorTex);
+    std::cout<<floorTex.getSize().x<<" "<<floorTex.getSize().y<<std::endl;
+    floor.setTexture(&floorTex, false);
 
     sf::RectangleShape cannon;
     cannon.setSize(sf::Vector2f(150, 150));
@@ -45,6 +50,13 @@ int main()
 
     sf::Text currentMaterial("K", pixelFont, 18);
     currentMaterial.setPosition(663, 38);
+
+    sf::Text basicCannonPowerText("Current power of cannon: ", pixelFont, 15);
+    basicCannonPowerText.setPosition(345, 84);
+
+    sf::Text currentCannonPower("K", pixelFont, 18);
+    currentCannonPower.setPosition(716, 85);
+    currentCannonPower.setFillColor(sf::Color::Red);
 
     while(window.isOpen())
     {
@@ -86,10 +98,14 @@ int main()
             currentMaterial.setLetterSpacing(2);
             currentMaterial.setFillColor(sf::Color(25, 25, 25, 255));
         }
+        int buffor = cannonPower;
+        currentCannonPower.setString(std::to_string(buffor));
 
         sf::Vector2f viewPos = window.view.getCenter();
         basicMaterialText.setPosition(viewPos.x-190, viewPos.y-350);
         currentMaterial.setPosition(viewPos.x+50, viewPos.y-352);
+        basicCannonPowerText.setPosition(viewPos.x-312, viewPos.y-312);
+        currentCannonPower.setPosition(viewPos.x+50, viewPos.y-311);
 
         window.clear(sf::Color(50, 50, 50, 255));
         window.draw(floor);
@@ -101,6 +117,8 @@ int main()
         }
         window.draw(basicMaterialText);
         window.draw(currentMaterial);
+        window.draw(basicCannonPowerText);
+        window.draw(currentCannonPower);
         window.display();
     }
     std::cout<<materialType<<std::endl;
