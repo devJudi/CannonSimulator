@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1562016007 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\main.cpp
+1562070142 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\main.cpp
 	<iostream>
 	<vector>
 	"MainWindow.h"
@@ -414,17 +414,129 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1562015534 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\mainwindow.cpp
+1562071288 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\mainwindow.cpp
 	"MainWindow.h"
 
-1562013788 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\mainwindow.h
+1562071288 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\mainwindow.h
 	<SFML/Graphics.hpp>
+	<iostream>
 	<vector>
 	"Ball.h"
 
-1562015922 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\ball.cpp
+1562071663 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\ball.cpp
 	"Ball.h"
 
-1562015534 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\ball.h
+1562067867 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\ball.h
 	<SFML/Graphics.hpp>
+
+1562066688 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\resources.cpp
+	"Resources.h"
+
+1562066688 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\resources.h
+	<SFML/Audio.hpp>
+	<SFML/Graphics.hpp>
+
+1557165935 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio.hpp
+	<SFML/System.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/Audio/Listener.hpp>
+	<SFML/Audio/Music.hpp>
+	<SFML/Audio/OutputSoundFile.hpp>
+	<SFML/Audio/Sound.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundBufferRecorder.hpp>
+	<SFML/Audio/SoundFileFactory.hpp>
+	<SFML/Audio/SoundFileReader.hpp>
+	<SFML/Audio/SoundFileWriter.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/Audio/SoundStream.hpp>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\inputsoundfile.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<algorithm>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\export.hpp
+	<SFML/Config.hpp>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\listener.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\music.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundStream.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\soundstream.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/System/Mutex.hpp>
+	<cstdlib>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\soundsource.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Vector3.hpp>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\alresource.hpp
+	<SFML/Audio/Export.hpp>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\outputsoundfile.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<string>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\sound.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\soundbuffer.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<set>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\soundbufferrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<vector>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\soundrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<vector>
+	<string>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\soundfilefactory.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+	<vector>
+	<SFML/Audio/SoundFileFactory.inl>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\soundfilefactory.inl
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\soundfilereader.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+
+1557165936 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio\soundfilewriter.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
 

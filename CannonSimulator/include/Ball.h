@@ -19,7 +19,8 @@ class Ball : public sf::CircleShape
         virtual ~Ball();
         void doGravity(int floorPosition);
 
-        int speed;
+        float speedY;
+        float speedX;
         int weight;
         float mod;
         materials ballMaterial;

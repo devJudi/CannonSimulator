@@ -5,15 +5,24 @@
 
 int main()
 {
-    MainWindow window(800, 600, "Cannon simulator v0.1");
+    MainWindow window(1200, 800, "Cannon simulator v0.1");
     std::vector <Ball> balls;
     int numberOfBalls = 0;
     materials materialType = wooden;
 
     sf::RectangleShape floor;
-    floor.setSize(sf::Vector2f(800, 10));
-    floor.setFillColor(sf::Color::White);
-    floor.setPosition(0, 590);
+    floor.setSize(sf::Vector2f(12000, 10));
+    floor.setPosition(0, 790);
+    sf::Texture floorTex;
+    floorTex.loadFromFile("img/floor.png");
+    floor.setTexture(&floorTex);
+
+    sf::RectangleShape cannon;
+    cannon.setSize(sf::Vector2f(150, 150));
+    cannon.setPosition(0, 640);
+    sf::Texture cannonTex;
+    cannonTex.loadFromFile("img/cannon.jpg");
+    cannon.setTexture(&cannonTex, true);
 
     sf::Font pixelFont;
     pixelFont.loadFromFile("fonts/pixelFont.ttf");
@@ -65,8 +74,13 @@ int main()
             currentMaterial.setFillColor(sf::Color(25, 25, 25, 255));
         }
 
-        window.clear();
+        sf::Vector2f viewPos = window.view.getCenter();
+        basicMaterialText.setPosition(viewPos.x-190, viewPos.y-350);
+        currentMaterial.setPosition(viewPos.x+50, viewPos.y-352);
+
+        window.clear(sf::Color(50, 50, 50, 255));
         window.draw(floor);
+        window.draw(cannon);
         for(int i = 0; i<numberOfBalls; i++)
         {
             balls[i].doGravity(floor.getPosition().y);

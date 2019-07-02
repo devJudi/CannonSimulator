@@ -3,7 +3,8 @@
 Ball::Ball(int radius, materials material, int points)
     :CircleShape(radius, points)
 {
-    speed = 0;
+    speedY = 0;
+    speedX = 20;
     weight = 1;
     mod = 0.5;
     this->setOrigin((radius*2)/2, (radius*2)/2);
@@ -49,32 +50,41 @@ Ball::~Ball()
 
 void Ball::doGravity(int floorPosition)
 {
+    if(speedX>10) speedX-=0.02;
+    else if(speedX>50) speedX-=0.015;
+    else if(speedX>0) speedX-=0.01;
+
     if(this->getPosition().y+this->getRadius()>=floorPosition)
     {
         this->setPosition(this->getPosition().x, floorPosition-this->getRadius());
-        if(speed>3)
+        if(speedY>3)
         {
             if(ballMaterial==wooden)
-                speed/=-2;
+                speedY/=-2;
             else if(ballMaterial==rubber)
-                speed/=-1.4;
+                speedY/=-1.4;
             else if(ballMaterial==metal)
-                speed/=-4;
+                speedY/=-4;
             else if(ballMaterial==aether)
-                speed/=-1.1;
+                speedY/=-1.1;
             else if(ballMaterial==pulsar)
-                this->move(0, 1);
+                speedY/=-80;
 
             this->move(0, -1);
         }
         else
         {
-            speed = 0;
+            speedY = 0;
+            if(speedX>2)
+            {
+                speedX-=0.5;
+                this->move(speedX, 0);
+            }
         }
     }
     else
     {
-        speed+=1;
-        this->move(0, mod*(speed*weight));
+        speedY+=1;
+        this->move(speedX, mod*(speedY*weight));
     }
 }
