@@ -60,15 +60,55 @@ void Ball::doGravity(int floorPosition)
         if(speedY>3)
         {
             if(ballMaterial==wooden)
-                speedY/=-2;
+            {
+                 speedY/=-2;
+                 if(speedY*speedY>100)   woodenSound.setVolume(100);
+                 else if(speedY*speedY>64)   woodenSound.setVolume(80);
+                 else if(speedY*speedY>36)   woodenSound.setVolume(60);
+                 else if(speedY*speedY>16)   woodenSound.setVolume(40);
+                 else   woodenSound.setVolume(20);
+                 woodenSound.play();
+            }
             else if(ballMaterial==rubber)
+            {
                 speedY/=-1.4;
+                if(speedY*speedY>100)   rubberSound.setVolume(100);
+                else if(speedY*speedY>64)   rubberSound.setVolume(80);
+                else if(speedY*speedY>36)   rubberSound.setVolume(60);
+                else if(speedY*speedY>16)   rubberSound.setVolume(40);
+                else   rubberSound.setVolume(20);
+                rubberSound.play();
+            }
             else if(ballMaterial==metal)
+            {
                 speedY/=-4;
+                if(speedY*speedY>100)   metalSound.setVolume(100);
+                else if(speedY*speedY>64)   metalSound.setVolume(80);
+                else if(speedY*speedY>36)   metalSound.setVolume(60);
+                else if(speedY*speedY>16)   metalSound.setVolume(40);
+                else   metalSound.setVolume(20);
+                metalSound.play();
+            }
             else if(ballMaterial==aether)
+            {
                 speedY/=-1.1;
+                if(speedY*speedY>100)   aetherSound.setVolume(100);
+                else if(speedY*speedY>64)   aetherSound.setVolume(80);
+                else if(speedY*speedY>36)   aetherSound.setVolume(60);
+                else if(speedY*speedY>16)   aetherSound.setVolume(40);
+                else   aetherSound.setVolume(20);
+                aetherSound.play();
+            }
             else if(ballMaterial==pulsar)
+            {
                 speedY/=-80;
+                if(speedY*speedY>100)   pulsarSound.setVolume(100);
+                else if(speedY*speedY>64)   pulsarSound.setVolume(80);
+                else if(speedY*speedY>36)   pulsarSound.setVolume(60);
+                else if(speedY*speedY>16)   pulsarSound.setVolume(40);
+                else   pulsarSound.setVolume(20);
+                pulsarSound.play();
+            }
 
             this->move(0, -1);
         }

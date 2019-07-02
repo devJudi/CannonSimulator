@@ -3,9 +3,22 @@
 #include "MainWindow.h"
 #include "Ball.h"
 
+sf::SoundBuffer woodenSoundBuffer;
+sf::SoundBuffer rubberSoundBuffer;
+sf::SoundBuffer metalSoundBuffer;
+sf::SoundBuffer aetherSoundBuffer;
+sf::SoundBuffer pulsarSoundBuffer;
+
+sf::Sound woodenSound;
+sf::Sound rubberSound;
+sf::Sound metalSound;
+sf::Sound aetherSound;
+sf::Sound pulsarSound;
+
 int main()
 {
-    MainWindow window(1200, 800, "Cannon simulator v0.1");
+    MainWindow window(1200, 800, "Cannon simulator v0.2");
+    window.loadSounds();
     std::vector <Ball> balls;
     int numberOfBalls = 0;
     materials materialType = wooden;

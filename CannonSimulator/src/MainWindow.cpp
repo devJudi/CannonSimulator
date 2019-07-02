@@ -14,6 +14,20 @@ MainWindow::~MainWindow()
     //dtor
 }
 
+void MainWindow::loadSounds()
+{
+    woodenSoundBuffer.loadFromFile("sounds/wooden.flac");
+    rubberSoundBuffer.loadFromFile("sounds/rubber.flac");
+    metalSoundBuffer.loadFromFile("sounds/metal.flac");
+    aetherSoundBuffer.loadFromFile("sounds/aether.flac");
+    pulsarSoundBuffer.loadFromFile("sounds/pulsar.flac");
+
+    woodenSound.setBuffer(woodenSoundBuffer);
+    rubberSound.setBuffer(rubberSoundBuffer);
+    metalSound.setBuffer(metalSoundBuffer);
+    aetherSound.setBuffer(aetherSoundBuffer);
+    pulsarSound.setBuffer(pulsarSoundBuffer);
+}
 
 void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &numberOfBalls, materials &materialType)
 {

@@ -1,7 +1,20 @@
 #ifndef BALL_H
 #define BALL_H
 
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+
+extern sf::SoundBuffer woodenSoundBuffer;
+extern sf::SoundBuffer rubberSoundBuffer;
+extern sf::SoundBuffer metalSoundBuffer;
+extern sf::SoundBuffer aetherSoundBuffer;
+extern sf::SoundBuffer pulsarSoundBuffer;
+
+extern sf::Sound woodenSound;
+extern sf::Sound rubberSound;
+extern sf::Sound metalSound;
+extern sf::Sound aetherSound;
+extern sf::Sound pulsarSound;
 
 enum materials
 {
