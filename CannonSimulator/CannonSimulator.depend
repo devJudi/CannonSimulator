@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1562100623 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\main.cpp
+1562158015 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\main.cpp
 	<iostream>
 	<vector>
 	<string>
@@ -415,10 +415,10 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1562101074 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\mainwindow.cpp
+1562157841 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\mainwindow.cpp
 	"MainWindow.h"
 
-1562101035 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\mainwindow.h
+1562158067 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\mainwindow.h
 	<SFML/Audio.hpp>
 	<SFML/Graphics.hpp>
 	<iostream>

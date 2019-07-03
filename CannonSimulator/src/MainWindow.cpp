@@ -22,12 +22,14 @@ void MainWindow::loadSounds()
     metalSoundBuffer.loadFromFile("sounds/metal.flac");
     aetherSoundBuffer.loadFromFile("sounds/aether.flac");
     pulsarSoundBuffer.loadFromFile("sounds/pulsar.flac");
+    cannonFireSoundBuffer.loadFromFile("sounds/cannonFire.flac");
 
     woodenSound.setBuffer(woodenSoundBuffer);
     rubberSound.setBuffer(rubberSoundBuffer);
     metalSound.setBuffer(metalSoundBuffer);
     aetherSound.setBuffer(aetherSoundBuffer);
     pulsarSound.setBuffer(pulsarSoundBuffer);
+    cannonFireSound.setBuffer(cannonFireSoundBuffer);
 }
 
 void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &numberOfBalls, materials &materialType)
@@ -74,11 +76,11 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
                 if(cannonPower>100)
                     cannonPower-=100;
             }
-            else if(event.key.code==sf::Keyboard::L)
+            else if(event.key.code==sf::Keyboard::L||event.key.code==sf::Keyboard::Right)
             {
                 cannonPower+=1000;
             }
-            else if(event.key.code==sf::Keyboard::K)
+            else if(event.key.code==sf::Keyboard::K||event.key.code==sf::Keyboard::Left)
             {
                 if(cannonPower>1000)
                     cannonPower-=1000;
@@ -88,16 +90,31 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
                 if(shouldWatchBack) shouldWatchBack=false;
                 else shouldWatchBack=true;
             }
+            else if(event.key.code==sf::Keyboard::Up)
+            {
+                if(cannonAngle<89) cannonAngle++;
+            }
+            else if(event.key.code==sf::Keyboard::Down)
+            {
+                if(cannonAngle>1) cannonAngle--;
+            }
         }
         if(event.type==sf::Event::MouseButtonPressed)
         {
             //sf::Window *window = this;
             //sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
+            cannonFireSound.setVolume(cannonPower/500);
+            cannonFireSound.play();
+            shouldCannonFireBeVisible=true;
             balls.push_back(Ball(30, materialType));
             balls[numberOfBalls].setPosition(140, 650);
-            balls[numberOfBalls].speedY=-40;
-            balls[numberOfBalls].speedX=sqrt(2*cannonPower/balls[numberOfBalls].weight);
+            balls[numberOfBalls].speedY=-(cannonAngle/90)*(sqrt(2*cannonPower/balls[numberOfBalls].weight));
+            balls[numberOfBalls].speedX=(1-(cannonAngle/90))*(sqrt(2*cannonPower/balls[numberOfBalls].weight));
             numberOfBalls++;
+        }
+        else
+        {
+            shouldCannonFireBeVisible=false;
         }
     }
 

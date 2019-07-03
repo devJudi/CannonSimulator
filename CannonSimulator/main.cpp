@@ -9,18 +9,24 @@ sf::SoundBuffer rubberSoundBuffer;
 sf::SoundBuffer metalSoundBuffer;
 sf::SoundBuffer aetherSoundBuffer;
 sf::SoundBuffer pulsarSoundBuffer;
+sf::SoundBuffer cannonFireSoundBuffer;
 
 sf::Sound woodenSound;
 sf::Sound rubberSound;
 sf::Sound metalSound;
 sf::Sound aetherSound;
 sf::Sound pulsarSound;
+sf::Sound cannonFireSound;
 
-float cannonPower = 2000;
+sf::RectangleShape cannonFire;
+bool shouldCannonFireBeVisible = false;
+
+float cannonPower = 20000;
+float cannonAngle = 45;
 
 int main()
 {
-    MainWindow window(1200, 800, "Cannon simulator v0.3");
+    MainWindow window(1200, 800, "Cannon simulator v0.4");
     window.loadSounds();
     std::vector <Ball> balls;
     int numberOfBalls = 0;
@@ -42,21 +48,40 @@ int main()
     cannonTex.loadFromFile("img/cannon.jpg");
     cannon.setTexture(&cannonTex, true);
 
+    sf::Image cannonFireImage;
+    cannonFireImage.loadFromFile("img/cannonFire.jpg");
+    cannonFireImage.createMaskFromColor(sf::Color::White);
+
+    cannonFire.setSize(sf::Vector2f(100, 100));
+    cannonFire.setPosition(158, 558);
+    cannonFire.setRotation(42.5);
+    sf::Texture cannonFireTex;
+    cannonFireTex.loadFromImage(cannonFireImage, sf::IntRect(0, 0, 1300, 1300));
+    cannonFire.setTexture(&cannonFireTex, true);
+
     sf::Font pixelFont;
     pixelFont.loadFromFile("fonts/pixelFont.ttf");
 
     sf::Text basicMaterialText("Current material: ", pixelFont, 15);
-    basicMaterialText.setPosition(425, 40);
+    //basicMaterialText.setPosition(425, 40);
 
     sf::Text currentMaterial("K", pixelFont, 18);
-    currentMaterial.setPosition(663, 38);
+    //currentMaterial.setPosition(663, 38);
 
     sf::Text basicCannonPowerText("Current power of cannon: ", pixelFont, 15);
     basicCannonPowerText.setPosition(345, 84);
 
     sf::Text currentCannonPower("K", pixelFont, 18);
-    currentCannonPower.setPosition(716, 85);
+    //currentCannonPower.setPosition(716, 85);
     currentCannonPower.setFillColor(sf::Color::Red);
+
+    sf::Text basicAngleText("Current angle: ", pixelFont, 15);
+    //basicCannonPowerText.setPosition(345, 84);
+
+    sf::Text currentAngle("45", pixelFont, 18);
+    //currentCannonPower.setPosition(716, 85);
+    currentAngle.setFillColor(sf::Color::Yellow);
+
 
     while(window.isOpen())
     {
@@ -100,12 +125,16 @@ int main()
         }
         int buffor = cannonPower;
         currentCannonPower.setString(std::to_string(buffor));
+        buffor = cannonAngle;
+        currentAngle.setString(std::to_string(buffor));
 
         sf::Vector2f viewPos = window.view.getCenter();
         basicMaterialText.setPosition(viewPos.x-190, viewPos.y-350);
         currentMaterial.setPosition(viewPos.x+50, viewPos.y-352);
         basicCannonPowerText.setPosition(viewPos.x-312, viewPos.y-312);
         currentCannonPower.setPosition(viewPos.x+50, viewPos.y-311);
+        basicAngleText.setPosition(viewPos.x-153, viewPos.y-275);
+        currentAngle.setPosition(viewPos.x+49, viewPos.y-274);
 
         window.clear(sf::Color(50, 50, 50, 255));
         window.draw(floor);
@@ -115,10 +144,13 @@ int main()
             balls[i].doGravity(floor.getPosition().y);
             window.draw(balls[i]);
         }
+        if(shouldCannonFireBeVisible) window.draw(cannonFire);
         window.draw(basicMaterialText);
         window.draw(currentMaterial);
         window.draw(basicCannonPowerText);
         window.draw(currentCannonPower);
+        window.draw(basicAngleText);
+        window.draw(currentAngle);
         window.display();
     }
     std::cout<<materialType<<std::endl;
