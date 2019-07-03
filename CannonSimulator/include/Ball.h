@@ -4,17 +4,12 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-extern sf::SoundBuffer woodenSoundBuffer;
-extern sf::SoundBuffer rubberSoundBuffer;
-extern sf::SoundBuffer metalSoundBuffer;
-extern sf::SoundBuffer aetherSoundBuffer;
-extern sf::SoundBuffer pulsarSoundBuffer;
-
-extern sf::Sound woodenSound;
-extern sf::Sound rubberSound;
-extern sf::Sound metalSound;
-extern sf::Sound aetherSound;
-extern sf::Sound pulsarSound;
+extern sf::Sound soundWooden;
+extern sf::Sound soundRubber;
+extern sf::Sound soundMetal;
+extern sf::Sound soundAether;
+extern sf::Sound soundPulsar;
+extern sf::Sound soundCannonFire;
 
 enum materials
 {

@@ -69,52 +69,52 @@ void Ball::doGravity(int floorPosition)
             if(ballMaterial==wooden)
             {
                  speedY/=-2;
-                 if(speedY*speedY>100)   woodenSound.setVolume(100);
-                 else if(speedY*speedY>64)   woodenSound.setVolume(80);
-                 else if(speedY*speedY>36)   woodenSound.setVolume(60);
-                 else if(speedY*speedY>16)   woodenSound.setVolume(40);
-                 else   woodenSound.setVolume(20);
-                 woodenSound.play();
+                 if(speedY*speedY>100)   soundWooden.setVolume(100);
+                 else if(speedY*speedY>64)   soundWooden.setVolume(80);
+                 else if(speedY*speedY>36)   soundWooden.setVolume(60);
+                 else if(speedY*speedY>16)   soundWooden.setVolume(40);
+                 else   soundWooden.setVolume(20);
+                 soundWooden.play();
             }
             else if(ballMaterial==rubber)
             {
                 speedY/=-1.4;
-                if(speedY*speedY>100)   rubberSound.setVolume(100);
-                else if(speedY*speedY>64)   rubberSound.setVolume(80);
-                else if(speedY*speedY>36)   rubberSound.setVolume(60);
-                else if(speedY*speedY>16)   rubberSound.setVolume(40);
-                else   rubberSound.setVolume(20);
-                rubberSound.play();
+                if(speedY*speedY>100)   soundRubber.setVolume(100);
+                else if(speedY*speedY>64)   soundRubber.setVolume(80);
+                else if(speedY*speedY>36)   soundRubber.setVolume(60);
+                else if(speedY*speedY>16)   soundRubber.setVolume(40);
+                else   soundRubber.setVolume(20);
+                soundRubber.play();
             }
             else if(ballMaterial==metal)
             {
                 speedY/=-4;
-                if(speedY*speedY>100)   metalSound.setVolume(100);
-                else if(speedY*speedY>64)   metalSound.setVolume(80);
-                else if(speedY*speedY>36)   metalSound.setVolume(60);
-                else if(speedY*speedY>16)   metalSound.setVolume(40);
-                else   metalSound.setVolume(20);
-                metalSound.play();
+                if(speedY*speedY>100)   soundMetal.setVolume(100);
+                else if(speedY*speedY>64)   soundMetal.setVolume(80);
+                else if(speedY*speedY>36)   soundMetal.setVolume(60);
+                else if(speedY*speedY>16)   soundMetal.setVolume(40);
+                else   soundMetal.setVolume(20);
+                soundMetal.play();
             }
             else if(ballMaterial==aether)
             {
                 speedY/=-1.1;
-                if(speedY*speedY>100)   aetherSound.setVolume(100);
-                else if(speedY*speedY>64)   aetherSound.setVolume(80);
-                else if(speedY*speedY>36)   aetherSound.setVolume(60);
-                else if(speedY*speedY>16)   aetherSound.setVolume(40);
-                else   aetherSound.setVolume(20);
-                aetherSound.play();
+                if(speedY*speedY>100)   soundAether.setVolume(100);
+                else if(speedY*speedY>64)   soundAether.setVolume(80);
+                else if(speedY*speedY>36)   soundAether.setVolume(60);
+                else if(speedY*speedY>16)   soundAether.setVolume(40);
+                else   soundAether.setVolume(20);
+                soundAether.play();
             }
             else if(ballMaterial==pulsar)
             {
                 speedY/=-80;
-                if(speedY*speedY>100)   pulsarSound.setVolume(100);
-                else if(speedY*speedY>64)   pulsarSound.setVolume(80);
-                else if(speedY*speedY>36)   pulsarSound.setVolume(60);
-                else if(speedY*speedY>16)   pulsarSound.setVolume(40);
-                else   pulsarSound.setVolume(20);
-                pulsarSound.play();
+                if(speedY*speedY>100)   soundPulsar.setVolume(100);
+                else if(speedY*speedY>64)   soundPulsar.setVolume(80);
+                else if(speedY*speedY>36)   soundPulsar.setVolume(60);
+                else if(speedY*speedY>16)   soundPulsar.setVolume(40);
+                else   soundPulsar.setVolume(20);
+                soundPulsar.play();
             }
 
             this->move(0, -1);

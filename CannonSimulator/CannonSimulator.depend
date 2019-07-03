@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1562158015 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\main.cpp
+1562168946 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\main.cpp
 	<iostream>
 	<vector>
 	<string>
+	"Resources.h"
 	"MainWindow.h"
 	"Ball.h"
 
@@ -415,10 +416,10 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1562157841 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\mainwindow.cpp
+1562168093 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\mainwindow.cpp
 	"MainWindow.h"
 
-1562158067 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\mainwindow.h
+1562168046 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\mainwindow.h
 	<SFML/Audio.hpp>
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -426,19 +427,20 @@
 	<vector>
 	"Ball.h"
 
-1562098400 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\ball.cpp
+1562168700 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\ball.cpp
 	"Ball.h"
 
-1562093418 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\ball.h
+1562168723 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\ball.h
 	<SFML/Audio.hpp>
 	<SFML/Graphics.hpp>
 
-1562066688 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\resources.cpp
+1562169262 source:c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\src\resources.cpp
 	"Resources.h"
 
-1562066688 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\resources.h
+1562169361 c:\users\jonas\desktop\projekty\github\cannonsimulator\cannonsimulator\include\resources.h
 	<SFML/Audio.hpp>
 	<SFML/Graphics.hpp>
+	"MainWindow.h"
 
 1557165935 c:\program files (x86)\c++\sfml-2.5.1\include\sfml\audio.hpp
 	<SFML/System.hpp>

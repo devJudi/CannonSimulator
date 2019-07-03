@@ -15,23 +15,6 @@ MainWindow::~MainWindow()
     //dtor
 }
 
-void MainWindow::loadSounds()
-{
-    woodenSoundBuffer.loadFromFile("sounds/wooden.flac");
-    rubberSoundBuffer.loadFromFile("sounds/rubber.flac");
-    metalSoundBuffer.loadFromFile("sounds/metal.flac");
-    aetherSoundBuffer.loadFromFile("sounds/aether.flac");
-    pulsarSoundBuffer.loadFromFile("sounds/pulsar.flac");
-    cannonFireSoundBuffer.loadFromFile("sounds/cannonFire.flac");
-
-    woodenSound.setBuffer(woodenSoundBuffer);
-    rubberSound.setBuffer(rubberSoundBuffer);
-    metalSound.setBuffer(metalSoundBuffer);
-    aetherSound.setBuffer(aetherSoundBuffer);
-    pulsarSound.setBuffer(pulsarSoundBuffer);
-    cannonFireSound.setBuffer(cannonFireSoundBuffer);
-}
-
 void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &numberOfBalls, materials &materialType)
 {
     while(this->pollEvent(event))
@@ -101,10 +84,8 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
         }
         if(event.type==sf::Event::MouseButtonPressed)
         {
-            //sf::Window *window = this;
-            //sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
-            cannonFireSound.setVolume(cannonPower/500);
-            cannonFireSound.play();
+            soundCannonFire.setVolume(cannonPower/500);
+            soundCannonFire.play();
             shouldCannonFireBeVisible=true;
             balls.push_back(Ball(30, materialType));
             balls[numberOfBalls].setPosition(140, 650);

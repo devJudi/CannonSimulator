@@ -8,21 +8,14 @@
 #include <vector>
 #include "Ball.h"
 
-extern sf::SoundBuffer woodenSoundBuffer;
-extern sf::SoundBuffer rubberSoundBuffer;
-extern sf::SoundBuffer metalSoundBuffer;
-extern sf::SoundBuffer aetherSoundBuffer;
-extern sf::SoundBuffer pulsarSoundBuffer;
-extern sf::SoundBuffer cannonFireSoundBuffer;;
+extern sf::Sound soundWooden;
+extern sf::Sound soundRubber;
+extern sf::Sound soundMetal;
+extern sf::Sound soundAether;
+extern sf::Sound soundPulsar;
+extern sf::Sound soundCannonFire;
 
-extern sf::Sound woodenSound;
-extern sf::Sound rubberSound;
-extern sf::Sound metalSound;
-extern sf::Sound aetherSound;
-extern sf::Sound pulsarSound;
-extern sf::Sound cannonFireSound;
-
-extern sf::RectangleShape cannonFire;
+extern sf::RectangleShape shapeCannonFire;
 extern bool shouldCannonFireBeVisible;
 
 extern float cannonPower;
@@ -36,7 +29,6 @@ class MainWindow : public sf::RenderWindow
         sf::View view;
         bool shouldWatchBack;
 
-        void loadSounds();
         void handleEvent(sf::Event event, std::vector <Ball> &balls, int &numberOfBalls, materials &materialType);
 
     protected:
