@@ -26,12 +26,14 @@ class Ball : public sf::CircleShape
         Ball(int radius, materials material, int points = 30);
         virtual ~Ball();
         void doGravity(int floorPosition);
+        bool isBallTouchingGround(int floorPosition);
 
         float speedY;
         float speedX;
         float weight;
-        float mod;
         float maxSpeedY;
+        float accelerationY;
+        float bounciness;
         materials ballMaterial;
 
     protected:

@@ -5,48 +5,52 @@ Ball::Ball(int radius, materials material, int points)
 {
     speedY = 0;
     speedX = 20;
-    weight = 1;
-    mod = 0.5;
+    accelerationY = 0.981;
     this->setOrigin((radius*2)/2, (radius*2)/2);
     ballMaterial = material;
 
     switch (material)
     {
     case wooden:
-        {
-            this->setFillColor(sf::Color(220, 100, 0, 240));
-            weight = 76.84;
-            break;
-        }
+    {
+        this->setFillColor(sf::Color(220, 100, 0, 240));
+        bounciness = 1;
+        weight = 76.84;
+        break;
+    }
     case rubber:
-        {
-            this->setFillColor(sf::Color(220, 20, 100, 220));
-            weight = 158.2;
-            break;
-        }
+    {
+        this->setFillColor(sf::Color(220, 20, 100, 220));
+        bounciness = 2.5;
+        weight = 158.2;
+        break;
+    }
     case metal:
-        {
-            this->setFillColor(sf::Color(100, 100, 100, 255));
-            weight = 881.4;
-            break;
-        }
+    {
+        this->setFillColor(sf::Color(100, 100, 100, 255));
+        bounciness = 0.5;
+        weight = 881.4;
+        break;
+    }
     case aether:
-        {
-            this->setFillColor(sf::Color(255, 255, 10, 255));
-            weight = 33.9;
-            break;
-        }
+    {
+        this->setFillColor(sf::Color(255, 255, 10, 255));
+        bounciness = 1.2;
+        weight = 33.9;
+        break;
+    }
     case pulsar:
-        {
-            this->setFillColor(sf::Color(10, 10, 10, 255));
-            this->setOutlineThickness(-1);
-            this->setOutlineColor(sf::Color::White);
-            weight = 113000;
-            break;
-        }
+    {
+        bounciness = 0.01;
+        this->setFillColor(sf::Color(10, 10, 10, 255));
+        this->setOutlineThickness(-1);
+        this->setOutlineColor(sf::Color::White);
+        weight = 113000;
+        break;
+    }
     }
 
-    maxSpeedY = 16*weight;
+    maxSpeedY = 1.6*weight;
 
 }
 
@@ -54,7 +58,7 @@ Ball::~Ball()
 {
     //dtor
 }
-
+/*
 void Ball::doGravity(int floorPosition)
 {
     if(speedX>10) speedX-=0.02;
@@ -133,5 +137,41 @@ void Ball::doGravity(int floorPosition)
     {
         speedY+=1;
         this->move(speedX, mod*speedY);
+    }
+}
+*/
+bool Ball::isBallTouchingGround(int floorPosition)
+{
+    return (this->getPosition().y+2*(this->getRadius())>=floorPosition);
+}
+
+void Ball::doGravity(int floorPosition)
+{
+    if(!isBallTouchingGround(floorPosition))
+    {
+        if(!(speedY>maxSpeedY)) speedY+=accelerationY;
+        else speedY=maxSpeedY;
+        this->move(0, speedY);
+
+        if(speedX>1)
+        {
+            speedX-=0.1;
+            this->move(speedX, 0);
+        }
+        else
+            speedX=0;
+    }
+    else
+    {
+        this->setPosition(this->getPosition().x, floorPosition-this->getRadius());
+
+
+        if(speedX>weight/200)
+        {
+            speedX-=1;
+            this->move(speedX, 0);
+        }
+        else
+            speedX=0;
     }
 }

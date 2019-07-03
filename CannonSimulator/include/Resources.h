@@ -25,6 +25,14 @@ extern sf::Text textBasicCannonPower;
 extern sf::Text textCurrentCannonPower;
 extern sf::Text textBasicAngle;
 extern sf::Text textCurrentAngle;
+extern sf::Text textBasicXPosition;
+extern sf::Text textCurrentXPosition;
+extern sf::Text textBasicYPosition;
+extern sf::Text textCurrentYPosition;
+extern sf::Text textBasicPreviousXPosition;
+extern sf::Text textCurrentPreviousXPosition;
+extern sf::Text textBasicPreviousYPosition;
+extern sf::Text textCurrentPreviousYPosition;
 
 extern sf::Texture texFloor;
 extern sf::Texture texCannon;
@@ -57,6 +65,7 @@ class Resources
         static void loadShapes();
 
         static void setTextCurrentMaterial(materials material);
+        static void updateTexts(materials material, sf::Vector2f viewPos, sf::Vector2f ballPos);
 
     protected:
 

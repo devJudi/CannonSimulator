@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <stdlib.h>
 #include "Resources.h"
 #include "MainWindow.h"
 #include "Ball.h"
-
 
 //////////////////////////////////////GLOBAL VARIABLES AND OBJECTS/////////////////////////////////////////////
 sf::Font fontPixel;
@@ -30,6 +30,16 @@ sf::Text textCurrentCannonPower("K", fontPixel, 18);
 sf::Text textBasicAngle("Current angle: ", fontPixel, 15);
 sf::Text textCurrentAngle("45", fontPixel, 18);
 
+sf::Text textBasicXPosition("X: ", fontPixel, 16);
+sf::Text textCurrentXPosition(":V", fontPixel, 17);
+sf::Text textBasicYPosition("Y: ", fontPixel, 16);
+sf::Text textCurrentYPosition("V:", fontPixel, 17);
+
+sf::Text textBasicPreviousXPosition("Previous X: ", fontPixel, 12);
+sf::Text textCurrentPreviousXPosition(" - ", fontPixel, 13);
+sf::Text textBasicPreviousYPosition("Previous Y: ", fontPixel, 12);
+sf::Text textCurrentPreviousYPosition(" - ", fontPixel, 13);
+
 sf::Texture texFloor;
 sf::Texture texCannon;
 sf::Texture texCannonFire;
@@ -41,17 +51,13 @@ sf::RectangleShape shapeCannonFire;
 sf::Image imageCannonFire;
 
 bool shouldCannonFireBeVisible = false;
-float cannonPower = 20000;
+float cannonPower = 100;
+float cannonPowerMod = 20;
 float cannonAngle = 45;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int main()
 {
-    MainWindow window(1200, 800, "Cannon simulator v0.4");
-    std::vector <Ball> balls;
-    int numberOfBalls = 0;
-    materials materialType = wooden;
-
     Resources::loadSoundBuffers();
     Resources::loadSounds();
     Resources::loadFonts();
@@ -60,26 +66,48 @@ int main()
     Resources::loadTextures();
     Resources::loadShapes();
 
+    std::vector <Ball> balls;
+    int numberOfBalls = 0;
+    std::string previousXPositionBuffer = " - ";
+    std::string previousYPositionBuffer = " - ";
+    materials materialType = wooden;
+
+    MainWindow window(1200, 800, "Cannon simulator v0.4");
     while(window.isOpen())
     {
         sf::Event event;
         window.handleEvent(event, balls, numberOfBalls, materialType);
-        Resources::setTextCurrentMaterial(materialType);
-
-        int buffor = cannonPower;
-        textCurrentCannonPower.setString(std::to_string(buffor));
-        buffor = cannonAngle;
-        textCurrentAngle.setString(std::to_string(buffor));
 
         sf::Vector2f viewPos = window.view.getCenter();
-        textBasicMaterial.setPosition(viewPos.x-190, viewPos.y-350);
-        textCurrentMaterial.setPosition(viewPos.x+50, viewPos.y-352);
-        textBasicCannonPower.setPosition(viewPos.x-312, viewPos.y-312);
-        textCurrentCannonPower.setPosition(viewPos.x+50, viewPos.y-311);
-        textBasicAngle.setPosition(viewPos.x-153, viewPos.y-275);
-        textCurrentAngle.setPosition(viewPos.x+49, viewPos.y-274);
+        if(numberOfBalls>0)
+        {
+            if(!balls[numberOfBalls-1].isBallTouchingGround(shapeFloor.getPosition().y))
+            {
+                Resources::updateTexts(materialType, viewPos,
+                                                   balls[numberOfBalls-1].getPosition());
+            }
+            else
+            {
+                previousXPositionBuffer = textCurrentXPosition.getString();
+                previousYPositionBuffer = textCurrentYPosition.getString();
+
+                Resources::updateTexts(materialType, viewPos,
+                                                   sf::Vector2f(0, 0));
+            }
+        }
+        else Resources::updateTexts(materialType, viewPos,
+                                                   sf::Vector2f(0, 0));
+
+        if(previousXPositionBuffer!=" - ")
+        {
+            if(atof(previousXPositionBuffer)>atof(textCurrentPreviousXPosition.getString()))
+            {
+                textCurrentPreviousXPosition.setString(previousXPositionBuffer);
+            }
+        }
 
         window.clear(sf::Color(50, 50, 50, 255));
+
         window.draw(shapeFloor);
         window.draw(shapeCannon);
         for(int i = 0; i<numberOfBalls; i++)
@@ -88,12 +116,26 @@ int main()
             window.draw(balls[i]);
         }
         if(shouldCannonFireBeVisible) window.draw(shapeCannonFire);
+
         window.draw(textBasicMaterial);
         window.draw(textCurrentMaterial);
+
         window.draw(textBasicCannonPower);
         window.draw(textCurrentCannonPower);
+
         window.draw(textBasicAngle);
         window.draw(textCurrentAngle);
+
+        window.draw(textBasicXPosition);
+        window.draw(textCurrentXPosition);
+        window.draw(textBasicYPosition);
+        window.draw(textCurrentYPosition);
+
+        window.draw(textBasicPreviousXPosition);
+        window.draw(textCurrentPreviousXPosition);
+        window.draw(textBasicPreviousYPosition);
+        window.draw(textCurrentPreviousYPosition);
+
         window.display();
     }
 
