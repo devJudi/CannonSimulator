@@ -52,21 +52,21 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
             }
             else if(event.key.code==sf::Keyboard::P)
             {
-                cannonPower+=100;
+                cannonPower+=1;
             }
             else if(event.key.code==sf::Keyboard::O)
             {
-                if(cannonPower>100)
-                    cannonPower-=100;
+                if(cannonPower>1)
+                    cannonPower-=1;
             }
             else if(event.key.code==sf::Keyboard::L||event.key.code==sf::Keyboard::Right)
             {
-                cannonPower+=1000;
+                cannonPower+=10;
             }
             else if(event.key.code==sf::Keyboard::K||event.key.code==sf::Keyboard::Left)
             {
-                if(cannonPower>1000)
-                    cannonPower-=1000;
+                if(cannonPower>10)
+                    cannonPower-=10;
             }
             else if(event.key.code==sf::Keyboard::Backspace)
             {
@@ -84,13 +84,16 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
         }
         if(event.type==sf::Event::MouseButtonPressed)
         {
-            soundCannonFire.setVolume(cannonPower/500);
+            soundCannonFire.setVolume(cannonPower/10);
             soundCannonFire.play();
             shouldCannonFireBeVisible=true;
             balls.push_back(Ball(30, materialType));
             balls[numberOfBalls].setPosition(140, 650);
-            balls[numberOfBalls].speedY=-(cannonAngle/90)*(sqrt(2*cannonPower/balls[numberOfBalls].weight));
-            balls[numberOfBalls].speedX=(1-(cannonAngle/90))*(sqrt(2*cannonPower/balls[numberOfBalls].weight));
+            balls[numberOfBalls].speedY=-(cannonAngle/90)*(2*cannonPower/balls[numberOfBalls].weight)*cannonPowerMod;
+            std::cout<<balls[numberOfBalls].speedY<<std::endl;
+            balls[numberOfBalls].speedX=(1-(cannonAngle/90))*(2*cannonPower/balls[numberOfBalls].weight)*cannonPowerMod;
+            if(balls[numberOfBalls].speedX<10) balls[numberOfBalls].speedX+=10;
+            if(balls[numberOfBalls].speedX>-5) balls[numberOfBalls].speedY-=5;
             numberOfBalls++;
         }
         else
@@ -103,15 +106,34 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
     {
         if(numberOfBalls>0)
         {
-            view.setCenter(balls[numberOfBalls-1].getPosition().x, 400);
-            if(view.getCenter().x<600)
+            if(balls[numberOfBalls-1].getPosition().y+100>400)
+            {
+                if(balls[numberOfBalls-1].getPosition().x+100<600)
+                {
+                    view.setCenter(600, 400);
+                }
+                else
+                {
+                    view.setCenter(balls[numberOfBalls-1].getPosition().x+100, 400);
+                }
+            }
+            else
+            {
+                if(balls[numberOfBalls-1].getPosition().x+100<600)
+                {
+                    view.setCenter(600, balls[numberOfBalls-1].getPosition().y+100);
+                }
+                else
+                {
+                    view.setCenter(balls[numberOfBalls-1].getPosition().x+100, balls[numberOfBalls-1].getPosition().y+100);
+                }
+            }
+
+            if(balls[numberOfBalls-1].speedX==0&&balls[numberOfBalls-1].speedY==0)
             {
                 view.setCenter(600, 400);
             }
-            if(balls[numberOfBalls-1].speedX<1)
-            {
-                view.setCenter(600, 400);
-            }
+
             this->setView(view);
         }
     }

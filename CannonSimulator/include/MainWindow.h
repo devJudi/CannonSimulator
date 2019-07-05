@@ -15,10 +15,20 @@ extern sf::Sound soundAether;
 extern sf::Sound soundPulsar;
 extern sf::Sound soundCannonFire;
 
-extern sf::RectangleShape shapeCannonFire;
-extern bool shouldCannonFireBeVisible;
+extern sf::Text textBasicXPosition;
+extern sf::Text textCurrentXPosition;
+extern sf::Text textBasicYPosition;
+extern sf::Text textCurrentYPosition;
+extern sf::Text textBasicPreviousXPosition;
+extern sf::Text textCurrentPreviousXPosition;
+extern sf::Text textBasicPreviousYPosition;
+extern sf::Text textCurrentPreviousYPosition;
 
+extern sf::RectangleShape shapeCannonFire;
+
+extern bool shouldCannonFireBeVisible;
 extern float cannonPower;
+extern float cannonPowerMod;
 extern float cannonAngle;
 
 class MainWindow : public sf::RenderWindow

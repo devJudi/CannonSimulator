@@ -39,6 +39,8 @@ void Resources::loadTexts()
 {
     textCurrentCannonPower.setFillColor(sf::Color::Red);
     textCurrentAngle.setFillColor(sf::Color::Yellow);
+    textCurrentXPosition.setFillColor(sf::Color::Green);
+    textCurrentYPosition.setFillColor(sf::Color::Green);
 }
 
 void Resources::loadImages()
@@ -117,5 +119,46 @@ void Resources::setTextCurrentMaterial(materials material)
             break;
         }
     }
+}
+
+void Resources::updateTexts(materials material, sf::Vector2f viewPos, sf::Vector2f ballPos)
+{
+    setTextCurrentMaterial(material);
+
+    int buffor = cannonPower;
+    textCurrentCannonPower.setString(std::to_string(buffor));
+
+    buffor = cannonAngle;
+    textCurrentAngle.setString(std::to_string(buffor));
+
+    buffor = ballPos.x;
+    if(ballPos.x<0)
+    {
+        std::cout<<ballPos.x<<std::endl;
+        textCurrentXPosition.setString(std::to_string(buffor));
+    }
+    else textCurrentXPosition.setString(std::to_string(buffor));
+
+    buffor = ballPos.y;
+    textCurrentYPosition.setString(std::to_string(buffor));
+
+    textBasicMaterial.setPosition(viewPos.x-190, viewPos.y-350);
+    textCurrentMaterial.setPosition(viewPos.x+50, viewPos.y-352);
+
+    textBasicCannonPower.setPosition(viewPos.x-312, viewPos.y-312);
+    textCurrentCannonPower.setPosition(viewPos.x+50, viewPos.y-311);
+
+    textBasicAngle.setPosition(viewPos.x-153, viewPos.y-275);
+    textCurrentAngle.setPosition(viewPos.x+49, viewPos.y-274);
+
+    textBasicXPosition.setPosition(viewPos.x+340, viewPos.y-365);
+    textCurrentXPosition.setPosition(viewPos.x+380, viewPos.y-366);
+    textBasicYPosition.setPosition(viewPos.x+340, viewPos.y-325);
+    textCurrentYPosition.setPosition(viewPos.x+380, viewPos.y-326);
+
+    textBasicPreviousXPosition.setPosition(viewPos.x+390, viewPos.y-285);
+    textCurrentPreviousXPosition.setPosition(viewPos.x+515, viewPos.y-286);
+    //textBasicPreviousYPosition.setPosition(viewPos.x+400, viewPos.y-255);
+    //textCurrentPreviousYPosition.setPosition(viewPos.x+530, viewPos.y-256);
 }
 

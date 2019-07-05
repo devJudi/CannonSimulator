@@ -3,6 +3,7 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 extern sf::Sound soundWooden;
 extern sf::Sound soundRubber;
@@ -26,12 +27,15 @@ class Ball : public sf::CircleShape
         Ball(int radius, materials material, int points = 30);
         virtual ~Ball();
         void doGravity(int floorPosition);
+        bool isBallTouchingGround(int floorPosition);
+        bool isBallStoped();
 
         float speedY;
         float speedX;
         float weight;
-        float mod;
         float maxSpeedY;
+        float accelerationY;
+        float bounciness;
         materials ballMaterial;
 
     protected:
