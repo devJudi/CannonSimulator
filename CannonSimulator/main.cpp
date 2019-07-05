@@ -52,7 +52,7 @@ sf::Image imageCannonFire;
 
 bool shouldCannonFireBeVisible = false;
 float cannonPower = 100;
-float cannonPowerMod = 100;
+float cannonPowerMod = 10;
 float cannonAngle = 45;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

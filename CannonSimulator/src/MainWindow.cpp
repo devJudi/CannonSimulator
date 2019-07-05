@@ -93,8 +93,8 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
             shouldCannonFireBeVisible=true;
             balls.push_back(Ball(30, materialType));
             balls[numberOfBalls].setPosition(140, 650);
-            balls[numberOfBalls].speedY=-(cannonAngle/90)*(0.5*cannonPower/balls[numberOfBalls].weight)*cannonPowerMod;
-            balls[numberOfBalls].speedX=(1-(cannonAngle/90))*(0.5*cannonPower/balls[numberOfBalls].weight)*cannonPowerMod;
+            balls[numberOfBalls].speedY=-(cannonAngle/90)*(0.5*cannonPower/sqrt(balls[numberOfBalls].weight))*cannonPowerMod;
+            balls[numberOfBalls].speedX=(1-(cannonAngle/90))*(0.5*cannonPower/sqrt(balls[numberOfBalls].weight))*cannonPowerMod;
             if(balls[numberOfBalls].speedX<10)
                 balls[numberOfBalls].speedX+=10;
             if(balls[numberOfBalls].speedX>-5)

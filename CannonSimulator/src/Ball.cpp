@@ -190,7 +190,7 @@ void Ball::doGravity(int floorPosition)
     {
         if(speedY>1/bounciness*15)
         {
-            speedY=(-1)*(speedY-(1/bounciness)*12);
+            speedY=(-1)*(speedY-(1/bounciness)*15);
             this->move(sf::Vector2f(0, speedY));
         }
         else
