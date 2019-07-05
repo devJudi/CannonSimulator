@@ -145,6 +145,11 @@ bool Ball::isBallTouchingGround(int floorPosition)
     return (this->getPosition().y+2*(this->getRadius())>=floorPosition);
 }
 
+bool Ball::isBallStoped()
+{
+    return speedX==0;
+}
+
 void Ball::doGravity(int floorPosition)
 {
     if(!isBallTouchingGround(floorPosition))
@@ -165,13 +170,28 @@ void Ball::doGravity(int floorPosition)
     {
         this->setPosition(this->getPosition().x, floorPosition-this->getRadius());
 
+        /*
+        speedX-=bounciness*5;
 
+        if(speedY>bounciness)
+        {
+            speedY=speedY*(-0.9);
+            this->move(sf::Vector2f(0, speedY));
+        }
+        else
+        {
+            speedY=0;
+        }
+
+        */
+        speedY=0;
         if(speedX>weight/200)
         {
-            speedX-=1;
+            speedX-=0.5;
             this->move(speedX, 0);
         }
         else
             speedX=0;
     }
+
 }

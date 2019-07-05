@@ -81,7 +81,7 @@ int main()
         sf::Vector2f viewPos = window.view.getCenter();
         if(numberOfBalls>0)
         {
-            if(!balls[numberOfBalls-1].isBallTouchingGround(shapeFloor.getPosition().y))
+            if(!balls[numberOfBalls-1].isBallStoped())
             {
                 Resources::updateTexts(materialType, viewPos,
                                                    balls[numberOfBalls-1].getPosition());
@@ -89,22 +89,18 @@ int main()
             else
             {
                 previousXPositionBuffer = textCurrentXPosition.getString();
-                previousYPositionBuffer = textCurrentYPosition.getString();
 
                 Resources::updateTexts(materialType, viewPos,
-                                                   sf::Vector2f(0, 0));
+                                                   balls[numberOfBalls].getPosition());
             }
         }
         else Resources::updateTexts(materialType, viewPos,
                                                    sf::Vector2f(0, 0));
 
-        if(previousXPositionBuffer!=" - ")
-        {
-            if(atof(previousXPositionBuffer)>atof(textCurrentPreviousXPosition.getString()))
-            {
-                textCurrentPreviousXPosition.setString(previousXPositionBuffer);
-            }
-        }
+
+        textCurrentPreviousYPosition.setString(previousYPositionBuffer);
+
+        if(previousXPositionBuffer!="0")   textCurrentPreviousXPosition.setString(previousXPositionBuffer);
 
         window.clear(sf::Color(50, 50, 50, 255));
 
@@ -133,8 +129,6 @@ int main()
 
         window.draw(textBasicPreviousXPosition);
         window.draw(textCurrentPreviousXPosition);
-        window.draw(textBasicPreviousYPosition);
-        window.draw(textCurrentPreviousYPosition);
 
         window.display();
     }

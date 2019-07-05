@@ -132,7 +132,12 @@ void Resources::updateTexts(materials material, sf::Vector2f viewPos, sf::Vector
     textCurrentAngle.setString(std::to_string(buffor));
 
     buffor = ballPos.x;
-    textCurrentXPosition.setString(std::to_string(buffor));
+    if(ballPos.x<0)
+    {
+        std::cout<<ballPos.x<<std::endl;
+        textCurrentXPosition.setString(std::to_string(buffor));
+    }
+    else textCurrentXPosition.setString(std::to_string(buffor));
 
     buffor = ballPos.y;
     textCurrentYPosition.setString(std::to_string(buffor));
@@ -146,14 +151,14 @@ void Resources::updateTexts(materials material, sf::Vector2f viewPos, sf::Vector
     textBasicAngle.setPosition(viewPos.x-153, viewPos.y-275);
     textCurrentAngle.setPosition(viewPos.x+49, viewPos.y-274);
 
-    textBasicXPosition.setPosition(viewPos.x+470, viewPos.y-365);
-    textCurrentXPosition.setPosition(viewPos.x+510, viewPos.y-366);
-    textBasicYPosition.setPosition(viewPos.x+470, viewPos.y-325);
-    textCurrentYPosition.setPosition(viewPos.x+510, viewPos.y-326);
+    textBasicXPosition.setPosition(viewPos.x+340, viewPos.y-365);
+    textCurrentXPosition.setPosition(viewPos.x+380, viewPos.y-366);
+    textBasicYPosition.setPosition(viewPos.x+340, viewPos.y-325);
+    textCurrentYPosition.setPosition(viewPos.x+380, viewPos.y-326);
 
-    textBasicPreviousXPosition.setPosition(viewPos.x+420, viewPos.y-285);
-    textCurrentPreviousXPosition.setPosition(viewPos.x+550, viewPos.y-286);
-    textBasicPreviousYPosition.setPosition(viewPos.x+420, viewPos.y-255);
-    textCurrentPreviousYPosition.setPosition(viewPos.x+550, viewPos.y-256);
+    textBasicPreviousXPosition.setPosition(viewPos.x+390, viewPos.y-285);
+    textCurrentPreviousXPosition.setPosition(viewPos.x+515, viewPos.y-286);
+    //textBasicPreviousYPosition.setPosition(viewPos.x+400, viewPos.y-255);
+    //textCurrentPreviousYPosition.setPosition(viewPos.x+530, viewPos.y-256);
 }
 

@@ -129,7 +129,7 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
                 }
             }
 
-            if(balls[numberOfBalls-1].speedX==0)
+            if(balls[numberOfBalls-1].speedX==0&&balls[numberOfBalls-1].speedY==0)
             {
                 view.setCenter(600, 400);
             }

@@ -3,6 +3,7 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <cmath>
 #include "MainWindow.h"
 
 extern sf::SoundBuffer soundBufferWooden;
