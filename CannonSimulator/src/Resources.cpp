@@ -58,7 +58,7 @@ void Resources::loadTextures()
 
 void Resources::loadShapes()
 {
-    shapeFloor.setSize(sf::Vector2f(384000, 10));
+    shapeFloor.setSize(sf::Vector2f(3840000, 10));
     shapeFloor.setPosition(0, 790);
     shapeFloor.setTexture(&texFloor, false);
 
@@ -151,8 +151,8 @@ void Resources::updateTexts(materials material, sf::Vector2f viewPos, sf::Vector
     textBasicYPosition.setPosition(viewPos.x+340, viewPos.y-325);
     textCurrentYPosition.setPosition(viewPos.x+380, viewPos.y-326);
 
-    textBasicPreviousXPosition.setPosition(viewPos.x+390, viewPos.y-285);
-    textCurrentPreviousXPosition.setPosition(viewPos.x+515, viewPos.y-286);
+    textBasicPreviousXPosition.setPosition(viewPos.x+290, viewPos.y-285);
+    textCurrentPreviousXPosition.setPosition(viewPos.x+415, viewPos.y-286);
     //textBasicPreviousYPosition.setPosition(viewPos.x+400, viewPos.y-255);
     //textCurrentPreviousYPosition.setPosition(viewPos.x+530, viewPos.y-256);
 }

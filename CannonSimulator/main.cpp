@@ -52,7 +52,7 @@ sf::Image imageCannonFire;
 
 bool shouldCannonFireBeVisible = false;
 float cannonPower = 100;
-float cannonPowerMod = 20;
+float cannonPowerMod = 100;
 float cannonAngle = 45;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -72,11 +72,16 @@ int main()
     std::string previousYPositionBuffer = " - ";
     materials materialType = wooden;
 
-    MainWindow window(1200, 800, "Cannon simulator v0.4");
+    MainWindow window(1200, 800, "Cannon simulator v0.5");
     while(window.isOpen())
     {
         sf::Event event;
         window.handleEvent(event, balls, numberOfBalls, materialType);
+        for(int i = 0; i<numberOfBalls; i++)
+        {
+            balls[i].doGravity(shapeFloor.getPosition().y);
+        }
+        window.setViewPosition(balls, numberOfBalls);
 
         sf::Vector2f viewPos = window.view.getCenter();
         if(numberOfBalls>0)
@@ -107,11 +112,12 @@ int main()
 
         window.draw(shapeFloor);
         window.draw(shapeCannon);
+
         for(int i = 0; i<numberOfBalls; i++)
         {
-            balls[i].doGravity(shapeFloor.getPosition().y);
             window.draw(balls[i]);
         }
+
         if(shouldCannonFireBeVisible) window.draw(shapeCannonFire);
 
         window.draw(textBasicMaterial);

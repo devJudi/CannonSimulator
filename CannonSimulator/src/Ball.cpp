@@ -8,6 +8,7 @@ Ball::Ball(int radius, materials material, int points)
     accelerationY = 0.981;
     this->setOrigin((radius*2)/2, (radius*2)/2);
     ballMaterial = material;
+    willBallBeOutOfFloor = false;
 
     switch (material)
     {
@@ -154,28 +155,42 @@ void Ball::doGravity(int floorPosition)
 {
     if(!isBallTouchingGround(floorPosition))
     {
+        if(floorPosition-(this->getPosition().y+this->getRadius())<speedY)
+        {
+            willBallBeOutOfFloor=true;
+        }
+        else
+        {
+            willBallBeOutOfFloor=false;
+        }
+
         if(!(speedY>maxSpeedY)) speedY+=accelerationY;
         else speedY=maxSpeedY;
-        this->move(0, speedY);
 
-        if(speedX>1)
+        if(willBallBeOutOfFloor) this->move(0, floorPosition-(this->getPosition().y+this->getRadius()));
+        else this->move(0, speedY);
+
+        if(speedX>20)
         {
             speedX-=0.1;
             this->move(speedX, 0);
         }
+        else if(speedX>10)
+        {
+            speedX/=1.05;
+            this->move(speedX, 0);
+        }
         else
-            speedX=0;
+        {
+           speedX/=1.002;
+            this->move(speedX, 0);
+        }
     }
     else
     {
-        this->setPosition(this->getPosition().x, floorPosition-this->getRadius());
-
-        /*
-        speedX-=bounciness*5;
-
-        if(speedY>bounciness)
+        if(speedY>1/bounciness*15)
         {
-            speedY=speedY*(-0.9);
+            speedY=(-1)*(speedY-(1/bounciness)*12);
             this->move(sf::Vector2f(0, speedY));
         }
         else
@@ -183,11 +198,9 @@ void Ball::doGravity(int floorPosition)
             speedY=0;
         }
 
-        */
-        speedY=0;
         if(speedX>weight/200)
         {
-            speedX-=0.5;
+            speedX-=0.3*(weight/110);
             this->move(speedX, 0);
         }
         else

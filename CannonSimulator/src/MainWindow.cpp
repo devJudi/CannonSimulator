@@ -70,16 +70,20 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
             }
             else if(event.key.code==sf::Keyboard::Backspace)
             {
-                if(shouldWatchBack) shouldWatchBack=false;
-                else shouldWatchBack=true;
+                if(shouldWatchBack)
+                    shouldWatchBack=false;
+                else
+                    shouldWatchBack=true;
             }
             else if(event.key.code==sf::Keyboard::Up)
             {
-                if(cannonAngle<89) cannonAngle++;
+                if(cannonAngle<89)
+                    cannonAngle++;
             }
             else if(event.key.code==sf::Keyboard::Down)
             {
-                if(cannonAngle>1) cannonAngle--;
+                if(cannonAngle>1)
+                    cannonAngle--;
             }
         }
         if(event.type==sf::Event::MouseButtonPressed)
@@ -89,11 +93,12 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
             shouldCannonFireBeVisible=true;
             balls.push_back(Ball(30, materialType));
             balls[numberOfBalls].setPosition(140, 650);
-            balls[numberOfBalls].speedY=-(cannonAngle/90)*(2*cannonPower/balls[numberOfBalls].weight)*cannonPowerMod;
-            std::cout<<balls[numberOfBalls].speedY<<std::endl;
-            balls[numberOfBalls].speedX=(1-(cannonAngle/90))*(2*cannonPower/balls[numberOfBalls].weight)*cannonPowerMod;
-            if(balls[numberOfBalls].speedX<10) balls[numberOfBalls].speedX+=10;
-            if(balls[numberOfBalls].speedX>-5) balls[numberOfBalls].speedY-=5;
+            balls[numberOfBalls].speedY=-(cannonAngle/90)*(0.5*cannonPower/balls[numberOfBalls].weight)*cannonPowerMod;
+            balls[numberOfBalls].speedX=(1-(cannonAngle/90))*(0.5*cannonPower/balls[numberOfBalls].weight)*cannonPowerMod;
+            if(balls[numberOfBalls].speedX<10)
+                balls[numberOfBalls].speedX+=10;
+            if(balls[numberOfBalls].speedX>-5)
+                balls[numberOfBalls].speedY-=5;
             numberOfBalls++;
         }
         else
@@ -102,11 +107,22 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
         }
     }
 
+}
+
+void MainWindow::setViewPosition(std::vector <Ball> &balls, int numberOfBalls)
+{
     if(shouldWatchBack==false)
     {
         if(numberOfBalls>0)
         {
+            float offsetX;
+            float offsetY;
+
+            offsetX = balls[numberOfBalls-1].speedX/3;
+            offsetY = balls[numberOfBalls-1].speedY/3;
+
             if(balls[numberOfBalls-1].getPosition().y+100>400)
+
             {
                 if(balls[numberOfBalls-1].getPosition().x+100<600)
                 {
@@ -114,18 +130,19 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
                 }
                 else
                 {
-                    view.setCenter(balls[numberOfBalls-1].getPosition().x+100, 400);
+                    view.setCenter(balls[numberOfBalls-1].getPosition().x+100+offsetX, 400);
                 }
             }
             else
             {
                 if(balls[numberOfBalls-1].getPosition().x+100<600)
                 {
-                    view.setCenter(600, balls[numberOfBalls-1].getPosition().y+100);
+                    view.setCenter(600, balls[numberOfBalls-1].getPosition().y+100+offsetY);
                 }
                 else
                 {
-                    view.setCenter(balls[numberOfBalls-1].getPosition().x+100, balls[numberOfBalls-1].getPosition().y+100);
+                    view.setCenter(balls[numberOfBalls-1].getPosition().x+100+offsetX,
+                                   balls[numberOfBalls-1].getPosition().y+100+offsetY);
                 }
             }
 

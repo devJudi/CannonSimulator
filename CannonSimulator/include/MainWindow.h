@@ -40,6 +40,7 @@ class MainWindow : public sf::RenderWindow
         bool shouldWatchBack;
 
         void handleEvent(sf::Event event, std::vector <Ball> &balls, int &numberOfBalls, materials &materialType);
+        void setViewPosition(std::vector <Ball> &balls, int numberOfBalls);
 
     protected:
 
