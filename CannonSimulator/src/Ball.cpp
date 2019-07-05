@@ -164,11 +164,15 @@ void Ball::doGravity(int floorPosition)
             willBallBeOutOfFloor=false;
         }
 
-        if(!(speedY>maxSpeedY)) speedY+=accelerationY;
-        else speedY=maxSpeedY;
+        if(!(speedY>maxSpeedY))
+            speedY+=accelerationY;
+        else
+            speedY=maxSpeedY;
 
-        if(willBallBeOutOfFloor) this->move(0, floorPosition-(this->getPosition().y+this->getRadius()));
-        else this->move(0, speedY);
+        if(willBallBeOutOfFloor)
+            this->move(0, floorPosition-(this->getPosition().y+this->getRadius()));
+        else
+            this->move(0, speedY);
 
         if(speedX>20)
         {
@@ -182,12 +186,46 @@ void Ball::doGravity(int floorPosition)
         }
         else
         {
-           speedX/=1.002;
+            speedX/=1.002;
             this->move(speedX, 0);
         }
     }
     else
     {
+        switch (ballMaterial)
+        {
+        case wooden:
+        {
+            soundWooden.setVolume(speedY*10);
+            soundWooden.play();
+            break;
+        }
+        case rubber:
+        {
+            soundRubber.setVolume(speedY*10);
+            soundRubber.play();
+            break;
+        }
+        case metal:
+        {
+            soundMetal.setVolume(speedY*10);
+            soundMetal.play();
+            break;
+        }
+        case aether:
+        {
+            soundAether.setVolume(speedY*10);
+            soundAether.play();
+            break;
+        }
+        case pulsar:
+        {
+            soundPulsar.setVolume(speedY*10);
+            soundPulsar.play();
+            break;
+        }
+        }
+
         if(speedY>1/bounciness*15)
         {
             speedY=(-1)*(speedY-(1/bounciness)*15);
