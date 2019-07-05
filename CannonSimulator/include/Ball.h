@@ -28,7 +28,7 @@ class Ball : public sf::CircleShape
         virtual ~Ball();
         void doGravity(int floorPosition);
         bool isBallTouchingGround(int floorPosition);
-        bool isBallStoped();
+        bool isBallStoped(int floorPosition);
 
         float speedY;
         float speedX;

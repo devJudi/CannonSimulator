@@ -142,12 +142,12 @@ void Ball::doGravity(int floorPosition)
 */
 bool Ball::isBallTouchingGround(int floorPosition)
 {
-    return (this->getPosition().y+2*(this->getRadius())>=floorPosition);
+    return (this->getPosition().y+(this->getRadius())>=floorPosition);
 }
 
-bool Ball::isBallStoped()
+bool Ball::isBallStoped(int floorPosition)
 {
-    return speedX==0;
+    return speedX==0&&speedY==0&&isBallTouchingGround(floorPosition);
 }
 
 void Ball::doGravity(int floorPosition)

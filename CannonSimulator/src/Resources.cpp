@@ -132,12 +132,7 @@ void Resources::updateTexts(materials material, sf::Vector2f viewPos, sf::Vector
     textCurrentAngle.setString(std::to_string(buffor));
 
     buffor = ballPos.x;
-    if(ballPos.x<0)
-    {
-        std::cout<<ballPos.x<<std::endl;
-        textCurrentXPosition.setString(std::to_string(buffor));
-    }
-    else textCurrentXPosition.setString(std::to_string(buffor));
+    textCurrentXPosition.setString(std::to_string(buffor));
 
     buffor = ballPos.y;
     textCurrentYPosition.setString(std::to_string(buffor));

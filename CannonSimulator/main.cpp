@@ -81,17 +81,18 @@ int main()
         sf::Vector2f viewPos = window.view.getCenter();
         if(numberOfBalls>0)
         {
-            if(!balls[numberOfBalls-1].isBallStoped())
+            if(!balls[numberOfBalls-1].isBallStoped(shapeFloor.getPosition().y))
             {
                 Resources::updateTexts(materialType, viewPos,
-                                                   balls[numberOfBalls-1].getPosition());
+                                       sf::Vector2f(balls[numberOfBalls-1].getPosition().x,
+                                                    (balls[numberOfBalls-1].getPosition().y-760)*-1));
             }
             else
             {
                 previousXPositionBuffer = textCurrentXPosition.getString();
 
                 Resources::updateTexts(materialType, viewPos,
-                                                   balls[numberOfBalls].getPosition());
+                                       sf::Vector2f(0, 0));
             }
         }
         else Resources::updateTexts(materialType, viewPos,
