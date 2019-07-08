@@ -45,6 +45,7 @@ sf::Texture texCannon;
 sf::Texture texCannonFire;
 
 sf::RectangleShape shapeFloor;
+sf::RectangleShape shapeWall;
 sf::RectangleShape shapeCannon;
 sf::RectangleShape shapeCannonFire;
 
@@ -111,6 +112,7 @@ int main()
         window.clear(sf::Color(50, 50, 50, 255));
 
         window.draw(shapeFloor);
+        window.draw(shapeWall);
         window.draw(shapeCannon);
 
         for(int i = 0; i<numberOfBalls; i++)

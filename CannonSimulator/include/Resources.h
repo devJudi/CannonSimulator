@@ -40,6 +40,7 @@ extern sf::Texture texCannon;
 extern sf::Texture texCannonFire;
 
 extern sf::RectangleShape shapeFloor;
+extern sf::RectangleShape shapeWall;
 extern sf::RectangleShape shapeCannon;
 extern sf::RectangleShape shapeCannonFire;
 

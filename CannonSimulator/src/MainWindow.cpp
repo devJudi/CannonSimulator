@@ -85,6 +85,20 @@ void MainWindow::handleEvent(sf::Event event, std::vector <Ball> &balls, int &nu
                 if(cannonAngle>1)
                     cannonAngle--;
             }
+            else if(event.key.code==sf::Keyboard::F1)
+            {
+                if(cannonPower>100)
+                    cannonPower-=100;
+            }
+            else if(event.key.code==sf::Keyboard::F2)
+            {
+                cannonPower+=100;
+            }
+            else if(event.key.code==sf::Keyboard::K||event.key.code==sf::Keyboard::Left)
+            {
+                if(cannonPower>10)
+                    cannonPower-=10;
+            }
         }
         if(event.type==sf::Event::MouseButtonPressed)
         {
@@ -119,8 +133,9 @@ void MainWindow::setViewPosition(std::vector <Ball> &balls, int numberOfBalls)
             float offsetY;
 
             offsetX = balls[numberOfBalls-1].speedX/3;
+            if(offsetX>400) offsetX=400;
             offsetY = balls[numberOfBalls-1].speedY/3;
-
+            if(offsetY>400) offsetY=400;
             if(balls[numberOfBalls-1].getPosition().y+100>400)
 
             {

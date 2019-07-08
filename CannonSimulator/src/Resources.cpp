@@ -62,10 +62,14 @@ void Resources::loadShapes()
     shapeFloor.setPosition(0, 790);
     shapeFloor.setTexture(&texFloor, false);
 
+    shapeWall.setSize(sf::Vector2f(3840000, 10));
+    shapeWall.setTexture(&texFloor, false);
+    shapeWall.setRotation(90);
+    shapeWall.setPosition(3840000, -3839210);
+
     shapeCannon.setSize(sf::Vector2f(150, 150));
     shapeCannon.setPosition(0, 640);
     shapeCannon.setTexture(&texCannon, true);
-
 
     shapeCannonFire.setSize(sf::Vector2f(100, 100));
     shapeCannonFire.setPosition(158, 558);

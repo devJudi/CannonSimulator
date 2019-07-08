@@ -153,6 +153,12 @@ bool Ball::isBallStoped(int floorPosition)
 
 void Ball::doGravity(int floorPosition)
 {
+    if(this->getPosition().x>=3840000-this->getRadius())
+    {
+        speedX=0;
+        this->setPosition(3840000-this->getRadius(), this->getPosition().y);
+        this->setFillColor(sf::Color::Magenta);
+    }
     if(!isBallTouchingGround(floorPosition))
     {
         if(floorPosition-(this->getPosition().y+this->getRadius())<speedY)
